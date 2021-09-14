@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import os,json
+import os, json
 from resource_management import *
 
 
@@ -12,7 +12,7 @@ class H2oService(Script):
         env.set_params(params)
 
         # 创建目录
-        Directory([params.h2o_base_dir,params.h2o_log_dir,params.h2o_pid_dir,params.flow_dir],
+        Directory([params.h2o_base_dir, params.h2o_log_dir, params.h2o_pid_dir, params.flow_dir],
                   mode=0755,
                   cd_access='a',
                   create_parents=True,
@@ -33,14 +33,12 @@ class H2oService(Script):
 
         Logger.info("安装结束")
 
-
     def configure(self, env):
         Logger.info("配置开始")
         import params
         env.set_params(params)
 
         Logger.info("配置结束")
-
 
     def start(self, env):
         Logger.info("启动开始")
@@ -50,16 +48,17 @@ class H2oService(Script):
         # 配置h2o
         self.configure(env)
 
-        Execute("source /etc/profile",user=params.h2o_user)
+        Execute("source /etc/profile", user=params.h2o_user)
         # 启动h2o
-        cmd = format("nohup java -Xmx{heap_size} -jar {h2o_base_dir}/h2o.jar -name {cluster_name} -port {rest_port} -log_dir {h2o_log_dir} -flow_dir {flow_dir} &")
+        cmd = format(
+            "nohup {java_home}/bin/java -Xmx{heap_size} -jar {h2o_base_dir}/h2o.jar -name {cluster_name} -port {rest_port} -log_dir {h2o_log_dir} -flow_dir {flow_dir} &")
         Execute(cmd, user=params.h2o_user)
 
         # 保存进程id
-        Execute("ps -ef | grep h2o.jar | grep -v grep | awk '{print $2}' > " + params.h2o_pid_file, user=params.h2o_user)
+        Execute("ps -ef | grep h2o.jar | grep -v grep | awk '{print $2}' > " + params.h2o_pid_file,
+                user=params.h2o_user)
 
         Logger.info("启动结束")
-
 
     def stop(self, env):
         Logger.info("停止开始")
@@ -84,7 +83,6 @@ class H2oService(Script):
 
         Logger.info("停止成功")
 
-
     def status(self, env):
         Logger.info("查看状态开始")
         import params
@@ -93,7 +91,6 @@ class H2oService(Script):
         # 根据pid检查文件状态
         check_process_status(params.h2o_pid_file)
         Logger.info("查看状态结束")
-
 
     def restart(self, env):
         Logger.info("重启开始")

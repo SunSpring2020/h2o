@@ -33,3 +33,6 @@ cluster_name = config['configurations']['h2o-config']['cluster.name']
 rest_port = config['configurations']['h2o-config']['rest.port']
 # flow保存地址
 flow_dir = config['configurations']['h2o-config']['flow.dir']
+
+if bool(config.get('hostLevelParams')) & bool(config['hostLevelParams'].get("java_home")):
+    java_home = config['hostLevelParams']['java_home']
