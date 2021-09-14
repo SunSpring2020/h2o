@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration supports_final="false" supports_adding_forbidden="true">
+
+    <property>
+        <name>heap.size</name>
+        <value>1</value>
+        <display-name>Heap Size</display-name>
+        <description>To set the total heap size for an H2O node.When launching nodes, we recommend allocating a total of four times the memory of your data.
+            Note: Do not try to launch H2O with more memory than you have available.
+        </description>
+        <value-attributes>
+            <type>int</type>
+            <unit>GB</unit>
+        </value-attributes>
+    </property>
+
+    <property>
+        <name>cluster.name</name>
+        <value>h2oCluster</value>
+        <display-name>Cluster Name</display-name>
+        <description>Assign a name to the H2O instance in the cluster. Nodes with the same cluster name will form an H2O cluster.</description>
+    </property>
+
+    <property>
+        <name>rest.port</name>
+        <value>54321</value>
+        <display-name>Rest Port</display-name>
+        <description>Specify a PORT used for REST API.</description>
+    </property>
+
+    <property>
+        <name>flow.dir</name>
+        <value>/var/h2o/flows</value>
+        <display-name>Flow Dir</display-name>
+        <description>Specify a directory for saved flows. </description>
+    </property>
+
+</configuration>

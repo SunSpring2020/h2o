@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<metainfo>
+    <schemaVersion>2.0</schemaVersion>
+    <services>
+        <service>
+            <name>H2O</name>
+            <displayName>H2O</displayName>
+            <comment>H2O 是一个开源、内存中、分布式、快速且可扩展的机器学习和预测分析平台，允许您基于大数据构建机器学习模型，并在企业环境中轻松实现这些模型的生产。</comment>
+            <version>3.32.1.7</version>
+
+            <components>
+                <component>
+                    <name>H2O_SERVICE</name>
+                    <displayName>H2O Service</displayName>
+                    <category>MASTER</category>
+                    <cardinality>1+</cardinality>
+                    <timelineAppid>H2O</timelineAppid>
+                    <commandScript>
+                        <script>scripts/h2o_service.py</script>
+                        <scriptType>PYTHON</scriptType>
+                        <timeout>1800</timeout>
+                    </commandScript>
+                </component>
+                <component>
+                    <name>H2O_CLIENT</name>
+                    <displayName>H2O Client</displayName>
+                    <category>CLIENT</category>
+                    <cardinality>1</cardinality>
+                    <commandScript>
+                        <script>scripts/h2o_client.py</script>
+                        <scriptType>PYTHON</scriptType>
+                    </commandScript>
+                    <configFiles>
+                        <configFile>
+                            <type>xml</type>
+                            <fileName>h2o-config.xml</fileName>
+                            <dictionaryName>h2o-config</dictionaryName>
+                        </configFile>
+                        <configFile>
+                            <type>xml</type>
+                            <fileName>h2o-env.xml</fileName>
+                            <dictionaryName>h2o-env</dictionaryName>
+                        </configFile>
+                    </configFiles>
+                </component>
+            </components>
+
+            <osSpecifics>
+                <osSpecific>
+                    <osFamily>any</osFamily>
+                </osSpecific>
+            </osSpecifics>
+
+            <configuration-dependencies>
+                <config-type>h2o-config</config-type>
+                <config-type>h2o-env</config-type>
+            </configuration-dependencies>
+
+            <!-- 快速链接配置 -->
+            <quickLinksConfigurations>
+                <quickLinksConfiguration>
+                    <fileName>quicklinks.json</fileName>
+                    <default>true</default>
+                </quickLinksConfiguration>
+            </quickLinksConfigurations>
+
+            <!-- 配置修改后重启 -->
+            <restartRequiredAfterChange>true</restartRequiredAfterChange>
+
+        </service>
+    </services>
+</metainfo>

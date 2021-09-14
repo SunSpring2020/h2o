@@ -1,0 +1,28 @@
+{
+  "name": "default",
+  "description": "default quick links configuration",
+  "configuration": {
+    "protocol": {
+      "type":"http",
+      "checks":[
+      ]
+    },
+    "links": [
+      {
+        "name": "h2o_flow",
+        "label": "H2O Flow",
+        "requires_user_name": "false",
+        "component_name": "H2O_SERVICE",
+        "url":"%@://%@:%@",
+        "port":{
+          "http_property": "rest.port",
+          "http_default_port": "54321",
+          "https_property": "rest.port",
+          "https_default_port": "54321",
+          "regex": "\\w*:(\\d+)",
+          "site": "h2o-config"
+        }
+      }
+    ]
+  }
+}

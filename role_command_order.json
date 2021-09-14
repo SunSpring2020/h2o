@@ -1,0 +1,8 @@
+{
+  "general_deps": {
+    "H2O_CLIENT-INSTALL": [
+      "H2O_SERVICE-INSTALL",
+      "H2O_SERVICE-START"
+    ]
+  }
+}

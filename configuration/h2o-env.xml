@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration supports_adding_forbidden="true">
+    <property>
+        <name>h2o.user</name>
+        <value>h2o</value>
+        <display-name>H2O User</display-name>
+        <property-type>USER</property-type>
+        <description>H2O unix user.</description>
+        <value-attributes>
+            <type>user</type>
+            <overridable>false</overridable>
+            <!-- 指定用户组 -->
+            <user-groups>
+                <property>
+                    <type>h2o-env</type>
+                    <name>h2o.group</name>
+                </property>
+                <property>
+                    <type>cluster-env</type>
+                    <name>user_group</name>
+                </property>
+            </user-groups>
+        </value-attributes>
+    </property>
+
+    <property>
+        <name>h2o.group</name>
+        <value>h2o</value>
+        <display-name>H2O Group</display-name>
+        <property-type>GROUP</property-type>
+        <description>H2O unix group.</description>
+    </property>
+
+    <property>
+        <name>env.log.dir</name>
+        <value>/var/log/h2o</value>
+        <display-name>H2O Log Directory</display-name>
+        <description>H2O log file directory.</description>
+        <value-attributes>
+            <type>directories</type>
+            <overrodable>false</overrodable>
+            <editable-only-at-install>true</editable-only-at-install>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+
+    <property>
+        <name>env.pid.dir</name>
+        <value>/var/run/h2o</value>
+        <display-name>H2O Pid Directory</display-name>
+        <description>H2O pid file directory.</description>
+        <value-attributes>
+            <type>directories</type>
+            <overrodable>false</overrodable>
+            <editable-only-at-install>true</editable-only-at-install>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+
+</configuration>
