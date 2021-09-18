@@ -6,7 +6,7 @@
             <name>H2O</name>
             <displayName>H2O</displayName>
             <comment>H2O 是一个开源、内存中、分布式、快速且可扩展的机器学习和预测分析平台，允许您基于大数据构建机器学习模型，并在企业环境中轻松实现这些模型的生产。</comment>
-            <version>3.32.1.7</version>
+            <version>3.34.0.1</version>
 
             <components>
                 <component>

@@ -6,10 +6,10 @@ from resource_management import *
 config = Script.get_config()
 
 # 组件下载地址
-h2o_download_url = 'http://fileserver.cn/HDP/centos6.5/h2o/h2o-3.32.1.7.tar.gz'
+h2o_download_url = 'http://fileserver.cn/HDP/centos6.5/h2o/h2o-3.34.0.1.tar.gz'
 if bool(config.get('hostLevelParams')) & bool(config['hostLevelParams'].get("repo_info")):
     baseUrl = json.loads(config['hostLevelParams']['repo_info'])[0]['baseUrl']
-    h2o_download_url = format("{baseUrl}/h2o/h2o-3.32.1.7.tar.gz")
+    h2o_download_url = format("{baseUrl}/h2o/h2o-3.34.0.1.tar.gz")
 
 # h2o env
 h2o_user = config['configurations']['h2o-env']['h2o.user']
